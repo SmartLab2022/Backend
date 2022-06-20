@@ -65,6 +65,10 @@ class LeaderBoard(db.Document):
     score = db.FloatField()
     time_taken = db.DictField()
     date = db.DateTimeField(datetime.now)
+    
+@app.route('/home' , methods=['GET'])
+def home():
+    return jsonify('Home')
 
 def generateOTP():
     otp = ''
