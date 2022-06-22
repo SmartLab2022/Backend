@@ -192,7 +192,7 @@ def addTestScore():
     msg = {'status':True}
     return jsonify(msg)
 
-@app.route('/addFootPrints' , methods=['POST' , 'OPTIONS'])
+@app.route('/addFootPrints' , methods=['POST'])
 def addFootPrints():
     data = request.get_json()
     doc = FootPrints(email=data['email'],page=data['page'],experiment=data['experiment'])
@@ -202,8 +202,6 @@ def addFootPrints():
     doc.moves_to['experiment']=data['moveToExperiment']
     doc.save()
     msg={'status':True}
-    if(request.method == 'OPTIONS'):
-        return jsonify(msg)
     return jsonify(msg)
 
 @app.route('/updateLeaderBoard' , methods=['POST'])
