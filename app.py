@@ -254,11 +254,11 @@ def getLeaderBoard():
             'email': obj['email'],
             'date': obj['date'].strftime('%d%m%Y'),
             'score': obj['score'],
-            'time-taken': obj['time_taken']
+            'time_taken': obj['time_taken']
         }
         objArray.append(dataobj)
     return jsonify(objArray)
-    
+
 
 @app.route('/getFootPrints' , methods=['POST'])
 def getFootPrint():
