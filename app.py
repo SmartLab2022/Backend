@@ -237,7 +237,7 @@ def getTestScore():
     for obj in data:
         dataobj = {
             'email': obj['email'],
-            'date': obj['date'].strftime('%d%m%Y'),
+            'date': obj['date'].strftime('%d/%m/%Y'),
             'score': obj['score'],
             'time_taken': obj['time_taken']
         }
@@ -252,7 +252,7 @@ def getLeaderBoard():
     for obj in data:
         dataobj = {
             'email': obj['email'],
-            'date': obj['date'].strftime('%d%m%Y'),
+            'date': obj['date'].strftime('%d/%m/%Y'),
             'score': obj['score'],
             'time_taken': obj['time_taken']
         }
