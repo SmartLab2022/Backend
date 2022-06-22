@@ -229,6 +229,37 @@ def getHighScore():
         objArray.append(dataobj)
     return jsonify(objArray)
 
+@app.route('/getTestScore' , methods=['POST'])
+def getTestScore():
+    data = request.get_json()
+    data = TestScore.objects(experiment=data['experiment']).order_by('-score' , 'time-taken')
+    objArray = []
+    for obj in data:
+        dataobj = {
+            'email': obj['email'],
+            'date': obj['date'].strftime('%d%m%Y'),
+            'score': obj['score'],
+            'time-taken': obj['time_taken']
+        }
+        objArray.append(dataobj)
+    return jsonify(objArray)
+
+@app.route('/getLeaderBoard' , methods=['POST'])
+def getLeaderBoard():
+    data = request.get_json()
+    data = LeaderBoard.objects(experiment=data['experiment']).order_by('-score' , 'time-taken')
+    objArray = []
+    for obj in data:
+        dataobj = {
+            'email': obj['email'],
+            'date': obj['date'].strftime('%d%m%Y'),
+            'score': obj['score'],
+            'time-taken': obj['time_taken']
+        }
+        objArray.append(dataobj)
+    return jsonify(objArray)
+    
+
 @app.route('/getFootPrints' , methods=['POST'])
 def getFootPrint():
     data = request.get_json()
