@@ -202,6 +202,8 @@ def addFootPrints():
     doc.moves_to['experiment']=data['moveToExperiment']
     doc.save()
     msg={'status':True}
+    if(request.method == 'OPTIONS'):
+        return jsonify(msg)
     return jsonify(msg)
 
 @app.route('/updateLeaderBoard' , methods=['POST'])
