@@ -16,7 +16,7 @@ app = Flask(__name__)
 app.secret_key = 'SmartLab2022'
 CORS(app)
 
-DB_URI='mongodb+srv://smartLab2022:' + urllib.parse.quote('smartLab@2022') + '@cluster0.iftw1rm.mongodb.net/smartlabs?retryWrites=true&w=majority'
+DB_URI='mongodb+srv://smartLab2022:' + urllib.parse.quote('smartLab@2022') + '@cluster0.iftw1rm.mongodb.net/?retryWrites=true&w=majority'
 app.config['MONGODB_HOST'] =DB_URI
 # #app.config['MONGODB_SETTINGS'] = {
 #     'db': 'SmartLab',
@@ -65,7 +65,7 @@ class LeaderBoard(db.Document):
     score = db.FloatField()
     time_taken = db.DictField()
     date = db.DateTimeField(datetime.now)
-    
+
 @app.route('/home' , methods=['GET'])
 def home():
     return jsonify('Home')
@@ -192,7 +192,7 @@ def addTestScore():
     msg = {'status':True}
     return jsonify(msg)
 
-@app.route('/addFootPrints' , methods=['POST'])
+@app.route('/addFootPrints' , methods=['POST' , 'OPTIONS'])
 def addFootPrints():
     data = request.get_json()
     doc = FootPrints(email=data['email'],page=data['page'],experiment=data['experiment'])
